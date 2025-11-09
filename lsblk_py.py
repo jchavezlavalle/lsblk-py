@@ -7,9 +7,7 @@ import json
 
 # create a function that runs suprocess and returns the output
 def run_command(command):
-    """
-    Runs the lsblk command and obtains the output
-    """
+    """Run a shell command and return its output."""
     if not command:
         return {}
     cmd = shlex.split(command)
@@ -31,7 +29,7 @@ def run_lsblk(device):
     ]
     }
     """
-    command = f'lsblk -J -o NAME,SIZE,TYPE,MOUNTPOINT'
+    command = 'lsblk -J -o NAME,SIZE,TYPE,MOUNTPOINT'
     output = run_command(command)
     devices = json.loads(output)['blockdevices']
     for parent in devices:
@@ -43,12 +41,10 @@ def run_lsblk(device):
     return {}
 
 def main(device):
+    """Main execution of the program: runs lsblk and prints formatted output."""
 
     output = run_lsblk(device)
-    """
-    Main execution of the program: This binds it all
-    """
-    print(f"lsblk output:         {output}")
+    print(f"{output}")
 
 if __name__ == '__main__':
     import sys
