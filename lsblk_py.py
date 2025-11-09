@@ -1,3 +1,5 @@
+"""CLI tool to parse `lsblk` output and convert it to JSON format."""
+
 import subprocess
 import shlex
 import json
