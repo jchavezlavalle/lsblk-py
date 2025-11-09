@@ -10,6 +10,8 @@ def run_command(command):
     """
     Runs the lsblk command and obtains the output
     """
+    if not command:
+        return {}
     cmd = shlex.split(command)
     output = subprocess.check_output(cmd)
     return output
